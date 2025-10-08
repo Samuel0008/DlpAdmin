@@ -12,8 +12,8 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["DlpAdmin.csproj", "DlpAdmin/"]
-RUN dotnet restore ".DlpAdmin.csproj"
+COPY ["DlpAdmin/DlpAdmin.csproj", "DlpAdmin/"]
+RUN dotnet restore "./DlpAdmin/DlpAdmin.csproj"
 COPY . .
 WORKDIR "/src/DlpAdmin"
 RUN dotnet build "./DlpAdmin.csproj" -c $BUILD_CONFIGURATION -o /app/build
